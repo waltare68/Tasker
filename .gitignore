@@ -1,0 +1,6 @@
+# Ignore all bin folders recursively
+**/bin/
+
+# Ignore all web.config files recursively
+**/web.config
+**/app.config

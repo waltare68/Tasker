@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b823d60252a9449384d99b536cedeb05" Name="Diagram1">
+        <EntityTypeShape EntityType="CSRM_Model.Category" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSRM_Model.EmailStatus" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSRM_Model.JobStatus" Width="1.5" PointX="8.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSRM_Model.Log_T" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSRM_Model.NotificationLog" Width="1.5" PointX="9.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSRM_Model.Notification" Width="1.5" PointX="7.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSRM_Model.Reminder" Width="1.5" PointX="10.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSRM_Model.Schedule" Width="1.5" PointX="10.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSRM_Model.Task" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSRM_Model.UserPreference" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSRM_Model.User" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSRM_Model.ScheduledJob" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="CSRM_Model.FK__Categorie__UserI__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK__Tasks__CategoryI__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK_Reminders_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK__Schedules__JobSt__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK__Log_T__UserID__0C85DE4D" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK__Notificat__Notif__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK__Notificat__TaskI__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK__Notificat__TaskI__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK__Notificat__TaskI__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK__Notificat__UserI__09A971A2" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK__Notificat__UserI__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK__Notificat__UserI__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK_Reminders_Tasks" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK_Reminders_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK__Schedules__TaskI__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK__Schedules__UserI__7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK__Tasks__UserID__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="CSRM_Model.FK__UserPrefe__UserI__36B12243" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

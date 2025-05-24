@@ -1,0 +1,99 @@
+﻿
+@model DTO.ReminderDTO
+
+<div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+
+    <div class="mb-4">
+        <label>Task Name</label>
+        @Html.DropDownList("TaskID", Model.Tasks, "select Task", new
+        {
+            @class = "focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none"
+        })
+        @Html.ValidationMessageFor(x => x.TaskID)
+    </div>
+    <div class="mb-4">
+        <label>Category</label>
+        @Html.DropDownList("CategoryID", Model.Categories, "select category", new
+        {
+            @class = "focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none"
+        })
+        @Html.ValidationMessageFor(x => x.CategoryID)
+    </div>
+
+    <div class="mb-4">
+        <label>Reminder Date</label>
+        @Html.TextBoxFor(x => x.ReminderDate, new
+        {
+            type = "date",
+            @class = "text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+        })
+    </div>
+    <div class="mb-4">
+        <label>Reminder Method</label>
+        @Html.DropDownList("NotificationMethod",
+            new SelectList(new[] { "Email", "SMS", "Push Notification" },
+            new
+                 {
+                @class = "text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+            }))
+    </div>
+    <div class="mb-4">
+        @Html.ValidationMessageFor(x => x.ReminderMessage)
+        <label>Reminder Message</label>
+        @Html.TextBoxFor(x => x.ReminderMessage, new
+        {
+            @class = "text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow",
+            @placeholder = "Reminder Message"
+        })
+
+    </div>
+    <div class="mb-4">
+        <label>Reminder Status</label>
+        @Html.DropDownList("ReminderStatus",
+            new SelectList(new[] { "Pending", "Sent" },
+            new
+                 {
+                @class = "text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+            }))
+    </div>
+    <div class="mb-4">
+        <label>Reminder Status</label>
+        @Html.DropDownListFor(model => model.ReminderStatus, new List<SelectListItem>
+        {
+            new SelectListItem { Value = "Pending", Text = "Pending" },
+            new SelectListItem { Value = "Sent", Text = "Sent" }
+        }, "Select Reminder status", new
+        {
+            @class = "focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none"
+        })
+    </div>
+
+    <div class="mb-4">
+        <label>Reminder Wait Type</label>
+        @Html.DropDownListFor(model => model.WaitType, new List<SelectListItem>
+        {
+            new SelectListItem { Value = "Hour", Text = "Hour" },
+            new SelectListItem { Value = "Day", Text = "Day" },
+            new SelectListItem { Value = "Week", Text = "Week" }
+        }, "Select Wait Type", new
+        {
+            @class = "focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none"
+        })
+    </div>
+    <div class="mb-4">
+        <label>Reminder Wait Period</label>
+        @Html.TextBoxFor(x => x.WaitPeriod, new
+        {
+       type = "number",
+       @class = "text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow",
+            @placeholder = "Task Name"
+        })
+
+    </div>
+    <div class="mb-4">
+        <button type="submit" class="inline-block px-3 py-3 mr-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-purple-700 to-pink-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">
+            <i class="fas fa-th-large">Save</i>
+        </button>
+    </div>
+
+</div>

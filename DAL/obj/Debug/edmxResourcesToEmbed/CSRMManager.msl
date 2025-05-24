@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CSRM_ModelStoreContainer" CdmEntityContainer="CSRM_liveEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="CSRM_Model.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailStatuses">
+      <EntityTypeMapping TypeName="CSRM_Model.EmailStatus">
+        <MappingFragment StoreEntitySet="EmailStatuses">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobStatuses">
+      <EntityTypeMapping TypeName="CSRM_Model.JobStatus">
+        <MappingFragment StoreEntitySet="JobStatuses">
+          <ScalarProperty Name="JobStatusID" ColumnName="JobStatusID" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Log_T">
+      <EntityTypeMapping TypeName="CSRM_Model.Log_T">
+        <MappingFragment StoreEntitySet="Log_T">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ProcessType" ColumnName="ProcessType" />
+          <ScalarProperty Name="ProcessTypeCategory" ColumnName="ProcessTypeCategory" />
+          <ScalarProperty Name="AccessTime" ColumnName="AccessTime" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="DeviceInfo" ColumnName="DeviceInfo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationLogs">
+      <EntityTypeMapping TypeName="CSRM_Model.NotificationLog">
+        <MappingFragment StoreEntitySet="NotificationLogs">
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+          <ScalarProperty Name="NotificationID" ColumnName="NotificationID" />
+          <ScalarProperty Name="SentAt" ColumnName="SentAt" />
+          <ScalarProperty Name="DeliveryStatus" ColumnName="DeliveryStatus" />
+          <ScalarProperty Name="DeliveryStatusDescription" ColumnName="DeliveryStatusDescription" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="CSRM_Model.Notification">
+        <MappingFragment StoreEntitySet="Notifications">
+          <ScalarProperty Name="NotificationID" ColumnName="NotificationID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Channel" ColumnName="Channel" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="ScheduledTime" ColumnName="ScheduledTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reminders">
+      <EntityTypeMapping TypeName="CSRM_Model.Reminder">
+        <MappingFragment StoreEntitySet="Reminders">
+          <ScalarProperty Name="ReminderID" ColumnName="ReminderID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="ReminderDateTime" ColumnName="ReminderDateTime" />
+          <ScalarProperty Name="NotificationMethod" ColumnName="NotificationMethod" />
+          <ScalarProperty Name="ReminderMessage" ColumnName="ReminderMessage" />
+          <ScalarProperty Name="ReminderStatusDesc" ColumnName="ReminderStatusDesc" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="WaitType" ColumnName="WaitType" />
+          <ScalarProperty Name="WaitPeriod" ColumnName="WaitPeriod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedules">
+      <EntityTypeMapping TypeName="CSRM_Model.Schedule">
+        <MappingFragment StoreEntitySet="Schedules">
+          <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="ScheduleDescription" ColumnName="ScheduleDescription" />
+          <ScalarProperty Name="IsReccurringjob" ColumnName="IsReccurringjob" />
+          <ScalarProperty Name="RecurrencePattern" ColumnName="RecurrencePattern" />
+          <ScalarProperty Name="WaitType" ColumnName="WaitType" />
+          <ScalarProperty Name="WaitPeriod" ColumnName="WaitPeriod" />
+          <ScalarProperty Name="IsRecurring" ColumnName="IsRecurring" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="JobStatusID" ColumnName="JobStatusID" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="ExecutionCount" ColumnName="ExecutionCount" />
+          <ScalarProperty Name="LastRunTime" ColumnName="LastRunTime" />
+          <ScalarProperty Name="FailedAttempts" ColumnName="FailedAttempts" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="CSRM_Model.Task">
+        <MappingFragment StoreEntitySet="Tasks">
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="IsRecurring" ColumnName="IsRecurring" />
+          <ScalarProperty Name="RecurrencePattern" ColumnName="RecurrencePattern" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="TaskStatus" ColumnName="TaskStatus" />
+          <ScalarProperty Name="Attachments" ColumnName="Attachments" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
+          <ScalarProperty Name="PriorityDescription" ColumnName="PriorityDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPreferences">
+      <EntityTypeMapping TypeName="CSRM_Model.UserPreference">
+        <MappingFragment StoreEntitySet="UserPreferences">
+          <ScalarProperty Name="PreferenceID" ColumnName="PreferenceID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="NotifyByEmail" ColumnName="NotifyByEmail" />
+          <ScalarProperty Name="NotifyBySMS" ColumnName="NotifyBySMS" />
+          <ScalarProperty Name="NotifyInApp" ColumnName="NotifyInApp" />
+          <ScalarProperty Name="Digest" ColumnName="Digest" />
+          <ScalarProperty Name="DigetPeriod" ColumnName="DigetPeriod" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="CSRM_Model.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="NotificationsEnabled" ColumnName="NotificationsEnabled" />
+          <ScalarProperty Name="AvatarUrl" ColumnName="AvatarUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ScheduledJobs">
+      <EntityTypeMapping TypeName="CSRM_Model.ScheduledJob">
+        <MappingFragment StoreEntitySet="ScheduledJobs">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ScheduledSql" ColumnName="ScheduledSql" />
+          <ScalarProperty Name="FirstRunOn" ColumnName="FirstRunOn" />
+          <ScalarProperty Name="LastRunOn" ColumnName="LastRunOn" />
+          <ScalarProperty Name="WaitPeriod" ColumnName="WaitPeriod" />
+          <ScalarProperty Name="WaitType" ColumnName="WaitType" />
+          <ScalarProperty Name="IsRepeatable" ColumnName="IsRepeatable" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

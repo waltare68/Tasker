@@ -1,0 +1,36 @@
+﻿
+
+
+@using UI.Areas.Admin;
+
+@if (ViewBag.ProcessState == BLL.General.Messages.AddSuccess)
+{
+
+    <div alert class="relative p-4 pr-12 mb-4 text-white border border-solid rounded-lg bg-gradient-to-tl from-green-600 to-lime-400 border-lime-300">
+        Success! Operation Added Successfully
+    </div>
+}
+else if (ViewBag.ProcessState == BLL.General.Messages.EmptyArea)
+{
+    <div alert class="relative p-4 pr-12 mb-4 text-white border border-red-300 border-solid rounded-lg bg-gradient-to-tl from-red-600 to-rose-400">
+        Please fill in the necessary areas
+    </div>
+}
+else if (ViewBag.ProcessState == BLL.General.Messages.UpdateSuccess)
+{
+    <div alert class="relative p-4 pr-12 mb-4 text-white border border-solid rounded-lg bg-gradient-to-tl from-green-600 to-lime-400 border-lime-300">
+        Success! Operation Updated Successfully
+    </div>
+}
+else if (ViewBag.ProcessState == BLL.General.Messages.ExtentionError)
+{
+    <div alert class="relative p-4 pr-12 mb-4 text-white border border-red-300 border-solid rounded-lg bg-gradient-to-tl from-red-600 to-rose-400">
+        Error!Please select a valid file
+    </div>
+}
+else if (ViewBag.ProcessState == BLL.General.Messages.GeneralError)
+{
+    <div alert class="relative p-4 pr-12 mb-4 text-white border border-red-300 border-solid rounded-lg bg-gradient-to-tl from-red-600 to-rose-400">
+        Error!!
+    </div>
+}

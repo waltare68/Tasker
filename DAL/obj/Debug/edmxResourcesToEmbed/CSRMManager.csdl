@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CSRM_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="CategoryName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Categorie__UserI__5BE2A6F2" FromRole="Categories" ToRole="Users" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK__Tasks__CategoryI__5DCAEF64" FromRole="Categories" ToRole="Tasks" />
+    <NavigationProperty Name="Reminders" Relationship="Self.FK_Reminders_Categories" FromRole="Categories" ToRole="Reminders" />
+  </EntityType>
+  <EntityType Name="EmailStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="JobStatus">
+    <Key>
+      <PropertyRef Name="JobStatusID" />
+    </Key>
+    <Property Name="JobStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Schedules" Relationship="Self.FK__Schedules__JobSt__02FC7413" FromRole="JobStatuses" ToRole="Schedules" />
+  </EntityType>
+  <EntityType Name="Log_T">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="ProcessType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProcessTypeCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AccessTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeviceInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Log_T__UserID__0C85DE4D" FromRole="Log_T" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="NotificationLog">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NotificationID" Type="Int32" />
+    <Property Name="SentAt" Type="DateTime" Precision="3" />
+    <Property Name="DeliveryStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DeliveryStatusDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Notification" Relationship="Self.FK__Notificat__Notif__3E52440B" FromRole="NotificationLogs" ToRole="Notifications" />
+  </EntityType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="NotificationID" />
+    </Key>
+    <Property Name="NotificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Channel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ScheduledTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="NotificationLogs" Relationship="Self.FK__Notificat__Notif__3E52440B" FromRole="Notifications" ToRole="NotificationLogs" />
+    <NavigationProperty Name="Task" Relationship="Self.FK__Notificat__TaskI__08B54D69" FromRole="Notifications" ToRole="Tasks" />
+    <NavigationProperty Name="Task1" Relationship="Self.FK__Notificat__TaskI__2F10007B" FromRole="Notifications" ToRole="Tasks" />
+    <NavigationProperty Name="Task2" Relationship="Self.FK__Notificat__TaskI__5629CD9C" FromRole="Notifications" ToRole="Tasks" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Notificat__UserI__09A971A2" FromRole="Notifications" ToRole="Users" />
+    <NavigationProperty Name="User1" Relationship="Self.FK__Notificat__UserI__300424B4" FromRole="Notifications" ToRole="Users" />
+    <NavigationProperty Name="User2" Relationship="Self.FK__Notificat__UserI__571DF1D5" FromRole="Notifications" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Reminder">
+    <Key>
+      <PropertyRef Name="ReminderID" />
+    </Key>
+    <Property Name="ReminderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="TaskID" Type="Int32" />
+    <Property Name="ReminderDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NotificationMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ReminderMessage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ReminderStatusDesc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+    <Property Name="WaitType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WaitPeriod" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Reminders_Categories" FromRole="Reminders" ToRole="Categories" />
+    <NavigationProperty Name="Task" Relationship="Self.FK_Reminders_Tasks" FromRole="Reminders" ToRole="Tasks" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Reminders_Users" FromRole="Reminders" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="ScheduleID" />
+    </Key>
+    <Property Name="ScheduleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="StartTime" Type="DateTime" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Precision="3" />
+    <Property Name="ScheduleDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="IsReccurringjob" Type="Boolean" Nullable="false" />
+    <Property Name="RecurrencePattern" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="WaitType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="WaitPeriod" Type="Int32" />
+    <Property Name="IsRecurring" Type="Boolean" Nullable="false" />
+    <Property Name="Enabled" Type="Boolean" Nullable="false" />
+    <Property Name="JobStatusID" Type="Int32" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ExecutionCount" Type="Int32" Nullable="false" />
+    <Property Name="LastRunTime" Type="DateTime" Precision="3" />
+    <Property Name="FailedAttempts" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="JobStatus" Relationship="Self.FK__Schedules__JobSt__02FC7413" FromRole="Schedules" ToRole="JobStatuses" />
+    <NavigationProperty Name="Task" Relationship="Self.FK__Schedules__TaskI__7E37BEF6" FromRole="Schedules" ToRole="Tasks" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Schedules__UserI__7F2BE32F" FromRole="Schedules" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="TaskID" />
+    </Key>
+    <Property Name="TaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DueDate" Type="DateTime" Precision="3" />
+    <Property Name="IsRecurring" Type="Boolean" Nullable="false" />
+    <Property Name="RecurrencePattern" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+    <Property Name="TaskStatus" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Attachments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="PriorityID" Type="Int32" />
+    <Property Name="PriorityDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Category1" Relationship="Self.FK__Tasks__CategoryI__5DCAEF64" FromRole="Tasks" ToRole="Categories" />
+    <NavigationProperty Name="Notifications" Relationship="Self.FK__Notificat__TaskI__08B54D69" FromRole="Tasks" ToRole="Notifications" />
+    <NavigationProperty Name="Notifications1" Relationship="Self.FK__Notificat__TaskI__2F10007B" FromRole="Tasks" ToRole="Notifications" />
+    <NavigationProperty Name="Notifications2" Relationship="Self.FK__Notificat__TaskI__5629CD9C" FromRole="Tasks" ToRole="Notifications" />
+    <NavigationProperty Name="Reminders" Relationship="Self.FK_Reminders_Tasks" FromRole="Tasks" ToRole="Reminders" />
+    <NavigationProperty Name="Schedules" Relationship="Self.FK__Schedules__TaskI__7E37BEF6" FromRole="Tasks" ToRole="Schedules" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Tasks__UserID__29572725" FromRole="Tasks" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="UserPreference">
+    <Key>
+      <PropertyRef Name="PreferenceID" />
+    </Key>
+    <Property Name="PreferenceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="NotifyByEmail" Type="Boolean" Nullable="false" />
+    <Property Name="NotifyBySMS" Type="Boolean" Nullable="false" />
+    <Property Name="NotifyInApp" Type="Boolean" Nullable="false" />
+    <Property Name="Digest" Type="Boolean" Nullable="false" />
+    <Property Name="DigetPeriod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK__UserPrefe__UserI__36B12243" FromRole="UserPreferences" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="3" />
+    <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+    <Property Name="NotificationsEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AvatarUrl" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Categories" Relationship="Self.FK__Categorie__UserI__5BE2A6F2" FromRole="Users" ToRole="Categories" />
+    <NavigationProperty Name="Log_T" Relationship="Self.FK__Log_T__UserID__0C85DE4D" FromRole="Users" ToRole="Log_T" />
+    <NavigationProperty Name="Notifications" Relationship="Self.FK__Notificat__UserI__09A971A2" FromRole="Users" ToRole="Notifications" />
+    <NavigationProperty Name="Notifications1" Relationship="Self.FK__Notificat__UserI__300424B4" FromRole="Users" ToRole="Notifications" />
+    <NavigationProperty Name="Notifications2" Relationship="Self.FK__Notificat__UserI__571DF1D5" FromRole="Users" ToRole="Notifications" />
+    <NavigationProperty Name="Reminders" Relationship="Self.FK_Reminders_Users" FromRole="Users" ToRole="Reminders" />
+    <NavigationProperty Name="Schedules" Relationship="Self.FK__Schedules__UserI__7F2BE32F" FromRole="Users" ToRole="Schedules" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK__Tasks__UserID__29572725" FromRole="Users" ToRole="Tasks" />
+    <NavigationProperty Name="UserPreferences" Relationship="Self.FK__UserPrefe__UserI__36B12243" FromRole="Users" ToRole="UserPreferences" />
+  </EntityType>
+  <EntityType Name="ScheduledJob">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="ScheduledSql" />
+      <PropertyRef Name="FirstRunOn" />
+      <PropertyRef Name="LastRunOn" />
+      <PropertyRef Name="IsRepeatable" />
+      <PropertyRef Name="IsEnabled" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+    <Property Name="ScheduledSql" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstRunOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastRunOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="WaitPeriod" Type="Int32" />
+    <Property Name="WaitType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsRepeatable" Type="Int32" Nullable="false" />
+    <Property Name="IsEnabled" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Categorie__UserI__5BE2A6F2">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Categories" Type="Self.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Categories">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tasks__CategoryI__5DCAEF64">
+    <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+    <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reminders_Categories">
+    <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+    <End Role="Reminders" Type="Self.Reminder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Reminders">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Schedules__JobSt__02FC7413">
+    <End Role="JobStatuses" Type="Self.JobStatus" Multiplicity="0..1" />
+    <End Role="Schedules" Type="Self.Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobStatuses">
+        <PropertyRef Name="JobStatusID" />
+      </Principal>
+      <Dependent Role="Schedules">
+        <PropertyRef Name="JobStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Log_T__UserID__0C85DE4D">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Log_T" Type="Self.Log_T" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Log_T">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__Notif__3E52440B">
+    <End Role="Notifications" Type="Self.Notification" Multiplicity="0..1" />
+    <End Role="NotificationLogs" Type="Self.NotificationLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Notifications">
+        <PropertyRef Name="NotificationID" />
+      </Principal>
+      <Dependent Role="NotificationLogs">
+        <PropertyRef Name="NotificationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__TaskI__08B54D69">
+    <End Role="Tasks" Type="Self.Task" Multiplicity="1" />
+    <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__TaskI__2F10007B">
+    <End Role="Tasks" Type="Self.Task" Multiplicity="1" />
+    <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__TaskI__5629CD9C">
+    <End Role="Tasks" Type="Self.Task" Multiplicity="1" />
+    <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__UserI__09A971A2">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__UserI__300424B4">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__UserI__571DF1D5">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reminders_Tasks">
+    <End Role="Tasks" Type="Self.Task" Multiplicity="0..1" />
+    <End Role="Reminders" Type="Self.Reminder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="Reminders">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reminders_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Reminders" Type="Self.Reminder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Reminders">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Schedules__TaskI__7E37BEF6">
+    <End Role="Tasks" Type="Self.Task" Multiplicity="0..1" />
+    <End Role="Schedules" Type="Self.Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="Schedules">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Schedules__UserI__7F2BE32F">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Schedules" Type="Self.Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Schedules">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tasks__UserID__29572725">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserPrefe__UserI__36B12243">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="UserPreferences" Type="Self.UserPreference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserPreferences">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CSRM_liveEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="EmailStatuses" EntityType="Self.EmailStatus" />
+    <EntitySet Name="JobStatuses" EntityType="Self.JobStatus" />
+    <EntitySet Name="Log_T" EntityType="Self.Log_T" />
+    <EntitySet Name="NotificationLogs" EntityType="Self.NotificationLog" />
+    <EntitySet Name="Notifications" EntityType="Self.Notification" />
+    <EntitySet Name="Reminders" EntityType="Self.Reminder" />
+    <EntitySet Name="Schedules" EntityType="Self.Schedule" />
+    <EntitySet Name="Tasks" EntityType="Self.Task" />
+    <EntitySet Name="UserPreferences" EntityType="Self.UserPreference" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="ScheduledJobs" EntityType="Self.ScheduledJob" />
+    <AssociationSet Name="FK__Categorie__UserI__5BE2A6F2" Association="Self.FK__Categorie__UserI__5BE2A6F2">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Categories" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tasks__CategoryI__5DCAEF64" Association="Self.FK__Tasks__CategoryI__5DCAEF64">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reminders_Categories" Association="Self.FK_Reminders_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Reminders" EntitySet="Reminders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Schedules__JobSt__02FC7413" Association="Self.FK__Schedules__JobSt__02FC7413">
+      <End Role="JobStatuses" EntitySet="JobStatuses" />
+      <End Role="Schedules" EntitySet="Schedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Log_T__UserID__0C85DE4D" Association="Self.FK__Log_T__UserID__0C85DE4D">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Log_T" EntitySet="Log_T" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__Notif__3E52440B" Association="Self.FK__Notificat__Notif__3E52440B">
+      <End Role="Notifications" EntitySet="Notifications" />
+      <End Role="NotificationLogs" EntitySet="NotificationLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__TaskI__08B54D69" Association="Self.FK__Notificat__TaskI__08B54D69">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__TaskI__2F10007B" Association="Self.FK__Notificat__TaskI__2F10007B">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__TaskI__5629CD9C" Association="Self.FK__Notificat__TaskI__5629CD9C">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__UserI__09A971A2" Association="Self.FK__Notificat__UserI__09A971A2">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__UserI__300424B4" Association="Self.FK__Notificat__UserI__300424B4">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__UserI__571DF1D5" Association="Self.FK__Notificat__UserI__571DF1D5">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reminders_Tasks" Association="Self.FK_Reminders_Tasks">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="Reminders" EntitySet="Reminders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reminders_Users" Association="Self.FK_Reminders_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Reminders" EntitySet="Reminders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Schedules__TaskI__7E37BEF6" Association="Self.FK__Schedules__TaskI__7E37BEF6">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="Schedules" EntitySet="Schedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Schedules__UserI__7F2BE32F" Association="Self.FK__Schedules__UserI__7F2BE32F">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Schedules" EntitySet="Schedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tasks__UserID__29572725" Association="Self.FK__Tasks__UserID__29572725">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserPrefe__UserI__36B12243" Association="Self.FK__UserPrefe__UserI__36B12243">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserPreferences" EntitySet="UserPreferences" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
